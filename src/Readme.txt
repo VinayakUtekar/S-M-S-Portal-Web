@@ -31,3 +31,8 @@ refrence - https://docs.oracle.com/javaee/5/tutorial/doc/bnajo.html
 2. use css for styling and endorsing the page
 3. add image to the home page 
 ///////////////////////////////////////////////////////////////////////////
+HTML and CSS coding u can refer below Documentation
+Html Documentation and refrence : 
+refrence - https://developer.mozilla.org/en-US/docs/Web/HTML
+CSS Documentation and refrence : 
+refrence - https://developer.mozilla.org/en-US/docs/Web/CSS
