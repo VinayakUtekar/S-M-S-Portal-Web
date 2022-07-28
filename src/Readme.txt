@@ -36,3 +36,6 @@ Html Documentation and refrence :
 refrence - https://developer.mozilla.org/en-US/docs/Web/HTML
 CSS Documentation and refrence : 
 refrence - https://developer.mozilla.org/en-US/docs/Web/CSS
+As of this project we need multiple JSP pages
+so to create follow the same steps like index.jsp
+then design uisng Html, Css and link them using HTML Syntax
