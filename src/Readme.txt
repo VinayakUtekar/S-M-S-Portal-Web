@@ -39,3 +39,11 @@ refrence - https://developer.mozilla.org/en-US/docs/Web/CSS
 As of this project we need multiple JSP pages
 so to create follow the same steps like index.jsp
 then design uisng Html, Css and link them using HTML Syntax
+///////////////////////////////////////////////////////////////////////////
+To use database in project we use MYSQL 
+i.e JDBC framework where java and database is combined
+for SQL synatx we can refer to below documentation
+refrence - https://dev.mysql.com/doc/
+this will help us to store and retrieve data
+ani will help user to keep data after crashing or abnormal termination
+of project
