@@ -1,3 +1,4 @@
+<%@ page import="java.sql.*" %>
 <html>
 <head>
   <title> Student Managemet System </title>
@@ -32,6 +33,48 @@
 	<br><br>
 	<input type="submit"  value="Save" name="btn">
   </form>
+  <%
+	if(request.getParameter("btn") != null){
+	int rno = Integer.parseInt(request.getParameter("rno"));
+	String name = request.getParameter("name");
+	int sub1 = Integer.parseInt(request.getParameter("sub1"));
+	int sub2 = Integer.parseInt(request.getParameter("sub2"));
+	int sub3 = Integer.parseInt(request.getParameter("sub3"));
+	try{
+		DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
+		String url = "jdbc:mysql://localhost:3306/smsproject2";
+		String un = "root";
+		String pw = "abc456";
+
+		Connection con = DriverManager.getConnection(url,un,pw);
+
+		String sq = "select * from student where rno = ?";
+		PreparedStatement ps = con.prepareStatement(sq);
+		ps.setInt(1, rno);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			out.println(rno + "  already exists");
+		}
+		else{
+			String sql = "insert into student values(?, ?, ?, ?, ?)";
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, rno);
+			pst.setString(2, name);
+			pst.setDouble(3, sub1);
+			pst.setDouble(4, sub2);
+			pst.setDouble(5, sub3);
+			pst.executeUpdate();
+			out.println("Record Added");
+
+		}
+		con.close();
+	}
+	catch(SQLException e){
+		out.println("issue " + e);
+	}
+  }
+  %>
 </center>
 </body>
 </html>
