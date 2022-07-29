@@ -1,3 +1,4 @@
+<! -- Index Page -->
 <html>
 <head>
   <title> Student Managemet System </title>
