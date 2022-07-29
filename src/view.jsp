@@ -1,3 +1,29 @@
+<%@ page import="java.sql.*" %>
+
+<%
+	if(request.getParameter("dr") != null)
+	{
+	try{
+		DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
+		String url = "jdbc:mysql://localhost:3306/sms_4july22";
+		String un = "root";
+		String pw = "abc456";
+
+		Connection con = DriverManager.getConnection(url,un,pw);
+
+		String sql = "delete from student where  rno = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setInt(1, Integer.parseInt(request.getParameter("dr")));
+		pst.executeUpdate();
+
+		con.close();
+	}
+	catch(SQLException e){
+		out.println("issue " + e);
+	}
+	}
+%>
 <html>
 <head>
   <title> Student Managemet System </title>
@@ -28,6 +54,26 @@
 	   <th> Subect3  </th>
 	   <th> Delete  </th>
 	</tr>	
+  <%
+	try{
+		DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
+		String url = "jdbc:mysql://localhost:3306/smsproject2";
+		String un = "root";
+		String pw = "abc456";
+
+		Connection con = DriverManager.getConnection(url,un,pw);
+
+		String sql = "select * from student";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		while(rs.next()){
+			int rno = rs.getInt(1);
+			String name = rs.getString(2);
+			Double sub1 = rs.getDouble(3);	
+			Double sub2 = rs.getDouble(4);
+			Double sub3 = rs.getDouble(5);
+  %>
   <tr width="50%">
 	<td> <%= rno %> </td>
 	<td> <%= name %> </td>
@@ -36,6 +82,14 @@
 	<td> <%= sub3 %> </td>
 	<td> <a href="?dr=<%= rno %>" onclick="return confirm('Are you Sure??')" > Delete </a> </td>
   <tr>
+  <%
+		}
+		con.close();
+	}
+	catch(SQLException e){
+		out.println("issue " + e);
+	}
+  %>
   </table>
 </center>
 </body>
